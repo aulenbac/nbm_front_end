@@ -10,7 +10,7 @@ node {
     checkout scm
 
     stage('rsync nbm-front-end') {
-        echo "Copying updated files from $environment"
+        echo "Copying updated files from $branch"
 
         switch (branch) {
             case ["develop", "master"]:
@@ -19,7 +19,7 @@ node {
                 sh("${CMD} . ${CSAHC_PATH}")
                 break
             default:
-                echo "No environment specifed"
+                echo "No branch specifed"
         } 
     }
 }
