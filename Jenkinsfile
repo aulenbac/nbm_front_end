@@ -9,7 +9,7 @@ def envMap = [
 node {
     checkout scm
 
-    stage('rsync config') {
+    stage('rsync nbm-front-end') {
         echo "Copying updated files from $environment"
         
         echo "${environment.class}"
