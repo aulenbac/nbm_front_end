@@ -1,4 +1,4 @@
-def CMD = "rsync -ur --verbose"
+def CMD = "rsync -ur --verbose --exclude '.git' --exclude 'Jenkinsfile'"
 def CSAHC_PATH = "igscsahcgw.cr.usgs.gov:/mnt/dist/websites/biogeography/"
 
 def envMap = [
@@ -18,7 +18,7 @@ node {
             case ["develop", "master"]:
                 CSAHC_PATH += envMap[environment]
                 // -O here omits sending directory times 
-                sh("${CMD} ${environment} ${CSAHC_PATH}")
+                sh("${CMD} . ${CSAHC_PATH}")
                 break
             default:
                 echo "No environment specifed"
