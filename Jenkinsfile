@@ -11,12 +11,10 @@ node {
 
     stage('rsync nbm-front-end') {
         echo "Copying updated files from $environment"
-        
-        echo "${environment.class}"
 
-        switch (environment) {
+        switch (branch) {
             case ["develop", "master"]:
-                CSAHC_PATH += envMap[environment]
+                CSAHC_PATH += envMap[branch]
                 // -O here omits sending directory times 
                 sh("${CMD} . ${CSAHC_PATH}")
                 break
