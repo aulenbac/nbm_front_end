@@ -1,4 +1,4 @@
-def CMD = "rsync -ur --verbose --exclude '.git' --exclude 'Jenkinsfile' --exclude 'test-report.html' --exclude 'test'"
+def CMD = "rsync -ur --verbose --exclude '.git' --exclude 'Jenkinsfile' --exclude '.idea'"
 def CSAHC_PATH = "igscsahcgw.cr.usgs.gov:/mnt/dist/websites/biogeography/"
 
 def envMap = [
