@@ -20,7 +20,7 @@ node {
                 break
             default:
                 sh("${CMD} . ${CSAHC_PATH}")
-                echo "No branch specifed"
+//                echo "No branch specifed"
         } 
     }
 }
