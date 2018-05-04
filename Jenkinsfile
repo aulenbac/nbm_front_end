@@ -1,10 +1,10 @@
-def CMD = "rsync -ur --verbose --exclude '.git' --exclude 'Jenkinsfile' --exclude '.gitignore'"
-def CSAHC_PATH = "igscsahcgw.cr.usgs.gov:/mnt/dist/websites/biogeography/"
+def CMD = "rsync -ur --verbose --exclude '.git' --exclude 'Jenkinsfile' --exclude '.gitignore' --exclude 'sonar-project.properties'"
+def CSAHC_PATH = "igscsahcgw.cr.usgs.gov:/mnt/dist/websites/biogeography/beta/"
 
-def envMap = [
-"develop": "beta/",
-"master": "prod/"
-]
+//def envMap = [
+//"develop": "beta/",
+//"master": "prod/"
+//]
 
 node {
     checkout scm
@@ -14,12 +14,13 @@ node {
 
         switch (branch) {
             case ["develop", "master"]:
-                CSAHC_PATH += envMap[branch]
+//                CSAHC_PATH += envMap[branch]
                 // -O here omits sending directory times 
                 sh("${CMD} . ${CSAHC_PATH}")
                 break
             default:
-                echo "No branch specifed"
+                sh("${CMD} . ${CSAHC_PATH}")
+//                echo "No branch specifed"
         } 
     }
 }
